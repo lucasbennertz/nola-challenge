@@ -28,11 +28,17 @@ public class Sale {
     private LocalDateTime createdAt;
 
     @Column(name = "sale_status_desc")
-    private String status;
+    private String saleStatusDesc;
 
     @Column(name = "total_amount")
     private Double totalAmount;
 
-    @OneToMany(mappedBy = "sale", fetch = FetchType.LAZY)
-    private List<ProductSale> products;
+    @Column(name = "production_seconds")
+    private Integer productionSeconds;
+
+    @Column(name = "delivery_seconds")
+    private Integer deliverySeconds;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sale")
+    private List<ProductSale> productSales;
 }
